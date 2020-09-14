@@ -93,7 +93,6 @@
     </div>
 </div>
 <!-- End All Pages -->
-
 <!-- Start Gallery -->
 <div class="gallery-box">
     <div class="container">
@@ -107,36 +106,15 @@
         </div>
         <div class="tz-gallery">
             <div class="row">
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <a class="lightbox" href="gallery-img-01.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-01.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="gallery-img-02.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-02.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="gallery-img-03.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-03.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <a class="lightbox" href="images/gallery-img-04.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-04.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="images/gallery-img-05.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-05.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="images/gallery-img-06.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-06.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
+                <g:each in = "${gallery_images}" status = "i" var = "val">
+                    <g:if test="${val.category == "gallery"}">
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <a class="lightbox" href="${createLink(action: 'getImageGallery', controller: 'admin', id:"${val.id}")}">
+                                <img class="img-fluid" src="${createLink(action: 'getImageGallery', controller: 'admin', id:"${val.id}")}" alt="Gallery Images" />
+                            </a>
+                        </div>
+                    </g:if>
+                </g:each>
             </div>
         </div>
     </div>

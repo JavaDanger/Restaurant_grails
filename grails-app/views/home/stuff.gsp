@@ -106,113 +106,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <div class="our-team">
-                    <div class="pic">
-                        <asset:image src="stuff-img-01.jpg"/>
-                        <ul class="social">
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-google-plus"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-linkedin"></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-content">
-                        <h3 class="title">Williamson</h3>
-                        <span class="post">Web Developer</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <div class="our-team">
-                    <div class="pic">
-                        <asset:image src="stuff-img-02.jpg"/>
-                        <ul class="social">
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-google-plus"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-linkedin"></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-content">
-                        <h3 class="title">Kristiana</h3>
-                        <span class="post">Web Designer</span>
+            <g:each in = "${members}" status = "i" var = "val">
+                <div class="col-md-4 col-sm-6">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="${createLink(action: 'getImage', controller: 'home', id:"${val.id}")}" />
+                            <ul class="social">
+                                <li><a href="#" class="fa fa-facebook"></a></li>
+                                <li><a href="#" class="fa fa-google-plus"></a></li>
+                                <li><a href="#" class="fa fa-instagram"></a></li>
+                                <li><a href="#" class="fa fa-linkedin"></a></li>
+                            </ul>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">${val.stuff_name}</h3>
+                            <span class="post">${val.position}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <div class="our-team">
-                    <div class="pic">
-                        <asset:image src="stuff-img-03.jpg"/>
-                        <ul class="social">
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-google-plus"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-linkedin"></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-content">
-                        <h3 class="title">Steve Thomas</h3>
-                        <span class="post">Web Developer</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <div class="our-team">
-                    <div class="pic">
-                        <asset:image src="stuff-img-04.jpg"/>
-                        <ul class="social">
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-google-plus"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-linkedin"></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-content">
-                        <h3 class="title">Williamson</h3>
-                        <span class="post">Web Developer</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <div class="our-team">
-                    <div class="pic">
-                        <asset:image src="stuff-img-05.jpg"/>
-                        <ul class="social">
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-google-plus"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-linkedin"></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-content">
-                        <h3 class="title">Kristiana</h3>
-                        <span class="post">Web Designer</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <div class="our-team">
-                    <div class="pic">
-                        <asset:image src="stuff-img-06.jpg"/>
-                        <ul class="social">
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-google-plus"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-linkedin"></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-content">
-                        <h3 class="title">Steve Thomas</h3>
-                        <span class="post">Web Developer</span>
-                    </div>
-                </div>
-            </div>
+            </g:each>
         </div>
     </div>
 </div>

@@ -102,14 +102,14 @@
             <div class="col-lg-12">
                 <div class="heading-title text-center">
                     <h2>Reservation</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                    <p>Reserve your table in advance</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-xs-12">
                 <div class="contact-block">
-                    <form id="contactForm">
+                    <form id="contactForm"
                         <div class="row">
                             <div class="col-md-6">
                                 <h3>Book a table</h3>
@@ -164,7 +164,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="submit-button text-center">
-                                    <button class="btn btn-common" id="submit" type="submit">Book Table</button>
+                                    <button class="btn btn-common" id="submit" type="submit" onClick = "addData()">Book Table</button>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -343,4 +343,65 @@
 <asset:javascript src="contact-form-script.js"></asset:javascript>
 <asset:javascript src="custom.js"></asset:javascript>
 </body>
+<script>
+    function addData() {
+        $(document).ready(function() {
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var phone = $("#phone").val();
+            var personNo = $("#person").val();
+            var inpDate = $("#input_date").val();
+            var inpTime = $("#input_time").val();
+
+            //Check if name field is empty
+            if (name == "") {
+                alert('Enter your name');
+                return false;
+            }
+            //Check if email field is empty
+            if (email == "") {
+                alert('Enter your email');
+                return false;
+            }
+            //Check if phone field is empty
+            if (phone == "") {
+                alert('Enter your phone number');
+                return false;
+            }
+            //Check if personNo field is empty
+            if (personNo == "") {
+                alert('Enter the number of persons');
+                return false;
+            }
+            //Check if inpDate field is empty
+            if (inpDate == "") {
+                alert('Select reservation date');
+                return false;
+            }
+            //Check if inpTime field is empty
+            if (inpTime == "") {
+                alert('Select reservation time.');
+                return false;
+            }
+            var conv_to_num = Number(phone);  //Convert phone no string to number
+            //Check if the age is an integer
+            if (isNaN(conv_to_num) || !Number.isInteger(conv_to_num)) {
+                alert("Age should be integer");
+                return false;
+            }
+            var URL="${createLink(controller:'home', action:'send')}"
+            $.ajax({
+                url: URL,
+                type: "POST",
+                datatype: "html",
+                data:{name:name, email:email, phone:phone, noOfPerson:personNo, resDate:inpDate, resTime:inpTime},
+                success:function(data)
+                {
+                    alert(data);
+                }
+            })
+
+        });
+    }
+</script>
 </html>

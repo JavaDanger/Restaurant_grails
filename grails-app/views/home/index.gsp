@@ -66,6 +66,7 @@
                         </div>
                     </li>
                     <li class="nav-item"><g:link class="nav-link" controller ="home" action ="contact">Contact</g:link></li>
+                    <li class="nav-item"><g:link class="nav-link" controller ="home" action ="admin">Admin</g:link></li>
                 </ul>
             </div>
         </div>
