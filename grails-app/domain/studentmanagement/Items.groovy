@@ -3,8 +3,8 @@ package studentmanagement
 class Items {
     String catagory
     String title
-    String item_details
     String price
+    String item_details
     byte[] image;
     String imageContentType;
 

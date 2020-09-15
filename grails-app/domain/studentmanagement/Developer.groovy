@@ -1,6 +1,6 @@
 package studentmanagement
 
-class PageDevlp {
+class Developer {
 
     String name
     String position

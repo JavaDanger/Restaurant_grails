@@ -110,7 +110,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="our-team">
                         <div class="pic">
-                            <img src="${createLink(action: 'getImage', controller: 'home', id:"${val.id}")}" />
+                            <img src="${createLink(action: 'getImage', controller: 'admin', id:"${val.id}")}" />
                             <ul class="social">
                                 <li><a href="#" class="fa fa-facebook"></a></li>
                                 <li><a href="#" class="fa fa-google-plus"></a></li>
@@ -145,30 +145,29 @@
             <div class="col-md-8 mr-auto ml-auto text-center">
                 <div id="reviews" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner mt-4">
-                        <div class="carousel-item text-center active">
-                            <div class="img-box p-1 border rounded-circle m-auto">
-                                <asset:image class="d-block w-100 rounded-circle" src="quotations-button.png" alt=""/>
-                            </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Paul Mitchel</strong></h5>
-                            <h6 class="text-dark m-0">Web Developer</h6>
-                            <p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-                        </div>
-                        <div class="carousel-item text-center">
-                            <div class="img-box p-1 border rounded-circle m-auto">
-                                <asset:image class="d-block w-100 rounded-circle" src="quotations-button.png" alt=""/>
-                            </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Steve Fonsi</strong></h5>
-                            <h6 class="text-dark m-0">Web Designer</h6>
-                            <p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-                        </div>
-                        <div class="carousel-item text-center">
-                            <div class="img-box p-1 border rounded-circle m-auto">
-                                <asset:image class="d-block w-100 rounded-circle" src="quotations-button.png" alt=""/>
-                            </div>
-                            <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Daniel vebar</strong></h5>
-                            <h6 class="text-dark m-0">Seo Analyst</h6>
-                            <p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-                        </div>
+                        <g:each in = "${fetchedValue}" status = "i" var = "val">
+                            <g:if test="${i == 0}">
+                                <div class="carousel-item text-center active">
+                                    <div class="img-box p-1 border rounded-circle m-auto">
+                                        <asset:image class="d-block w-100 rounded-circle" src="quotations-button.png" alt=""/>
+                                    </div>
+                                    <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">${val.name}</strong></h5>
+                                    <h6 class="text-dark m-0">${val.position}</h6>
+                                    <p class="m-0 pt-3">${val.details}</p>
+                                </div>
+                            </g:if>
+                            <g:else>
+                                <div class="carousel-item text-center">
+                                    <div class="img-box p-1 border rounded-circle m-auto">
+                                        <asset:image class="d-block w-100 rounded-circle" src="quotations-button.png" alt=""/>
+                                    </div>
+                                    <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">${val.name}</strong></h5>
+                                    <h6 class="text-dark m-0">${val.position}</h6>
+                                    <p class="m-0 pt-3">${val.details}</p>
+                                </div>
+                            </g:else>
+                        </g:each>
+
                     </div>
                     <a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
