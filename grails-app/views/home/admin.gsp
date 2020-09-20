@@ -59,6 +59,16 @@
         border: 2px solid darkred;
         background: palevioletred;
     }
+    #add-blog{
+        text:center;
+        width:500px;
+        height:470px;
+        padding:20px;
+        margin:20px;
+        float:left;
+        border: 2px solid darkred;
+        background: palevioletred;
+    }
     #add-stuff{
         margin-top:100px;
         text-align:center;
@@ -213,6 +223,24 @@
     </div>
 </div>
 <!--end Menu form-->
+<!--start Blog form-->
+<div id="add-blog" style="">
+    <strong style="margin:5px">Add Post Here...</strong><br>
+    <g:uploadForm class="photos" action ="addBlog" controller="admin">
+        <input type="text" name="title" placeholder="Enter Post Title"/>
+        <select  id="menu_select" name="category">
+            <option disabled selected>Select Category*</option>
+            <option value="drink">drink</option>
+            <option value="lunch">lunch</option>
+            <option value="dinner">dinner</option>
+        </select> <br>
+        <textarea cols="50" rows="5" name="shortcut" placeholder="Enter post-shortcut" ></textarea><br>
+        <textarea cols="50" rows="5" name="details" placeholder="Enter post-details"></textarea><br>
+        <g:field name="photos" type="file" accept="image/*"/>
+        <g:submitButton name="save" value="save" />
+    </g:uploadForm>
+</div>
+<!--end Blog form-->
 
 <a href="#" id="back-to-top" title="Back to top" style="display: none;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
 

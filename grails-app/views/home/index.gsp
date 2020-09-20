@@ -77,45 +77,23 @@
 <!-- Start slides -->
 <div id="slides" class="cover-slides">
     <ul class="slides-container">
-        <li class="text-left">
-            <asset:image src="slider-01.jpg" alt=""/>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+        <g:each in = "${gallery_images}" status = "i" var = "val">
+            <g:if test="${val.category == "home"}">
+                <li class="text-left">
+                    <img src="${createLink(action: 'getImageGallery', controller: 'admin', id: "${val.id}")}" alt="nothing" />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
+                                <p class="m-b-40">See how your users experience your website in realtime or view  <br>
+                                    trends to see any changes in performance over time.</p>
+                                <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </li>
-        <li class="text-left">
-            <asset:image src="slider-02.jpg" alt=""/>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="text-left">
-            <asset:image src="slider-03.jpg" alt=""/>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Yamifood Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
+                </li>
+            </g:if>
+        </g:each>
     </ul>
     <div class="slides-navigation">
         <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>

@@ -5,6 +5,7 @@ class AdminController {
     def galleryService
     def stuffService
     def developerService
+    def blogService
     def index() { }
     def createGallery () {
         def imageMap = [:];
@@ -147,6 +148,58 @@ class AdminController {
             redirect(controller: "home", action: "admin")
         }else{
             render "Something going wrong..!!"
+        }
+    }
+
+    def addBlog(){
+        def imageMap = [:];
+        byte[] image=request.getFile("photos").bytes
+        String imageContentType = request.getFile("photos").contentType
+        String title = params.title;
+        String category = params.category;
+        String datePart  = new Date();
+        String timePart = "01:53 PM"
+        String shortcut = params.shortcut;
+        String details = params.details;
+        if (image == null ) {
+            imageMap.put("title", null);
+            imageMap.put("category", null);
+            imageMap.put("date", null);
+            imageMap.put("time", null);
+            imageMap.put("shortcut", null);
+            imageMap.put("details", null);
+            imageMap.put("image", null);
+            imageMap.put("imageContentType", null);
+        } else {
+            imageMap.put("title", title);
+            imageMap.put("category", category);
+            imageMap.put("date", datePart);
+            imageMap.put("time", timePart);
+            imageMap.put("shortcut", shortcut);
+            imageMap.put("details", details);
+            imageMap.put("image", image);
+            imageMap.put("imageContentType", imageContentType);
+        }
+
+        Blogs newImage = new Blogs(imageMap);
+        if(blogService.save(newImage)){
+            redirect(controller: "home", action: "admin")
+        }else{
+            render "Error..!!"
+        }
+    }
+
+
+    def getBlog(Long id) {
+        def user = blogService.get(id);
+        if (user != null) {
+            response.contentType = user.imageContentType == null ? "image/jpeg" : user.imageContentType;
+            response.contentLength = user.image == null ? 0 : user.image.size();
+            response.outputStream << user.image;
+        } else {
+            response.contentType = "image/jpeg";
+            response.contentLength = 0;
+            response.outputStream << null;
         }
     }
 }
